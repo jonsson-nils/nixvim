@@ -1,4 +1,9 @@
+{ pkgs, ... }:
 {
+  extraPackages = with pkgs; [
+    nixfmt
+  ];
+
   globals.mapleader = " ";
   globals.maplocalleader = " ";
 
@@ -10,20 +15,20 @@
     shiftround = true;
 
     # --- General ---
-    number = true;           # Show line numbers
-    relativenumber = true;   # Relative line numbers for easier jumping
-    undofile = true;         # Persistent undo history
-    updatetime = 200;        # Faster completion and diagnostic popups
-    cursorline = true;       # Highlight the current line
-    
+    number = true; # Show line numbers
+    relativenumber = true; # Relative line numbers for easier jumping
+    undofile = true; # Persistent undo history
+    updatetime = 200; # Faster completion and diagnostic popups
+    cursorline = true; # Highlight the current line
+
     # --- Search ---
-    ignorecase = true;       # Ignore case in search patterns
-    smartcase = true;        # Smart case (case-sensitive if capital is used)
-    
+    ignorecase = true; # Ignore case in search patterns
+    smartcase = true; # Smart case (case-sensitive if capital is used)
+
     # --- Appearance ---
-    termguicolors = true;    # Enable 24-bit RGB colors
-    signcolumn = "yes";      # Always show the sign column to prevent "flickering"
-    laststatus = 3;          # Global statusline (Standard in modern Neovim)
+    termguicolors = true; # Enable 24-bit RGB colors
+    signcolumn = "yes"; # Always show the sign column to prevent "flickering"
+    laststatus = 3; # Global statusline (Standard in modern Neovim)
   };
 
   colorschemes.tokyonight = {
@@ -35,12 +40,13 @@
     # LazyVim uses specific symbols for a cleaner gutter
     signs = {
       text = {
-        "__raw" = ''{
-          [vim.diagnostic.severity.ERROR] = " ",
-          [vim.diagnostic.severity.WARN]  = " ",
-          [vim.diagnostic.severity.HINT]  = " ",
-          [vim.diagnostic.severity.INFO]  = " ",
-        }'';
+        "__raw" = ''
+          {
+                    [vim.diagnostic.severity.ERROR] = " ",
+                    [vim.diagnostic.severity.WARN]  = " ",
+                    [vim.diagnostic.severity.HINT]  = " ",
+                    [vim.diagnostic.severity.INFO]  = " ",
+                  }'';
       };
     };
     # Show diagnostic source (e.g., "nixd") in the hover popup
@@ -71,15 +77,42 @@
         };
 
         spec = [
-          { __unkeyed-1 = "<leader>b"; group = "Buffer"; }
-          { __unkeyed-1 = "<leader>c"; group = "Code"; }
-          { __unkeyed-1 = "<leader>f"; group = "File/Find"; }
-          { __unkeyed-1 = "<leader>g"; group = "Git"; }
-          { __unkeyed-1 = "<leader>gh"; group = "Hunks"; }
-          { __unkeyed-1 = "<leader>q"; group = "Quit/Session"; }
-          { __unkeyed-1 = "<leader>s"; group = "Search"; }
-          { __unkeyed-1 = "<leader>u"; group = "UI"; }
-          { __unkeyed-1 = "<leader>z"; group = "Zen"; }
+          {
+            __unkeyed-1 = "<leader>b";
+            group = "Buffer";
+          }
+          {
+            __unkeyed-1 = "<leader>c";
+            group = "Code";
+          }
+          {
+            __unkeyed-1 = "<leader>f";
+            group = "File/Find";
+          }
+          {
+            __unkeyed-1 = "<leader>g";
+            group = "Git";
+          }
+          {
+            __unkeyed-1 = "<leader>gh";
+            group = "Hunks";
+          }
+          {
+            __unkeyed-1 = "<leader>q";
+            group = "Quit/Session";
+          }
+          {
+            __unkeyed-1 = "<leader>s";
+            group = "Search";
+          }
+          {
+            __unkeyed-1 = "<leader>u";
+            group = "UI";
+          }
+          {
+            __unkeyed-1 = "<leader>z";
+            group = "Zen";
+          }
         ];
       };
     };
@@ -89,7 +122,7 @@
       enable = true;
       settings = {
         current_line_blame = true; # Shows "who did this" next to the cursor
-        trouble = true;            # Integrates with trouble.nvim if you use it
+        trouble = true; # Integrates with trouble.nvim if you use it
         signs = {
           add.text = "┃";
           change.text = "┃";
@@ -135,13 +168,13 @@
           installCargo = false; # Let Nix manage cargo/rustc
           installRustc = false;
         };
-  
+
         # Nix: Uses nixd (highly recommended for flakes)
         nixd.enable = true;
-  
+
         # Lua: Uses lua-ls
         lua_ls.enable = true;
-  
+
         # Tailwind: Uses tailwindcss-language-server
         tailwindcss.enable = true;
       };
@@ -156,26 +189,28 @@
       enable = true;
       settings.options.theme = "tokyonight"; # Matches your theme
     };
-    
+
     fidget.enable = true; # LSP progress notifications
-    
+
     bufferline = {
       enable = true;
       settings.options = {
         separator_style = "slant"; # Clean visual tabs
-        offsets = [{
-          filetype = "oil";
-          text = "File Explorer";
-          highlight = "Directory";
-          text_align = "left";
-        }];
+        offsets = [
+          {
+            filetype = "oil";
+            text = "File Explorer";
+            highlight = "Directory";
+            text_align = "left";
+          }
+        ];
       };
     };
-    
+
     # --- Git Tools ---
     diffview.enable = true;
     fugitive.enable = true;
-    
+
     # --- Productivity & Utilities ---
     undotree = {
       enable = true;
@@ -184,7 +219,7 @@
         WindowLayout = 2;
       };
     };
-    
+
     hop = {
       enable = true;
       settings.keys = "etovxqpdygfblzhckisuran"; # Home row priority
@@ -199,10 +234,10 @@
           "cmp.entry.get_documentation" = true;
         };
         presets = {
-          bottom_search = true;    # classic bottom search bar
-          command_palette = true;   # center floating command bar
+          bottom_search = true; # classic bottom search bar
+          command_palette = true; # center floating command bar
           long_message_to_split = true;
-          inc_rename = false;       # enable if you use inc-rename.nvim
+          inc_rename = false; # enable if you use inc-rename.nvim
         };
       };
     };
@@ -216,10 +251,14 @@
       modules = {
         pairs = {
           # Use default settings for smart closing
-          modes = { insert = true; command = true; terminal = false; };
+          modes = {
+            insert = true;
+            command = true;
+            terminal = false;
+          };
           # Skip autopair if the next character is not whitespace
           markdown = true;
-        }; 
+        };
 
         # --- AI: Enhanced Text Objects ---
         # Adds "around/inside" for functions, classes, and more
@@ -231,7 +270,7 @@
         # Use `sa` (add), `sd` (delete), `sr` (replace)
         surround = {
           mappings = {
-            add = "sa"; 
+            add = "sa";
             delete = "sd";
             find = "sf";
             find_left = "sF";
@@ -249,8 +288,8 @@
       settings = {
         window = {
           backdrop = 0.95; # shadow the background (0 to 1)
-          width = 120;     # width of the centered window
-          height = 1;      # height of the centered window (1 = 100%)
+          width = 120; # width of the centered window
+          height = 1; # height of the centered window (1 = 100%)
           options = {
             signcolumn = "no";
             number = false;
@@ -277,7 +316,15 @@
       enable = true;
       settings = {
         dir.__raw = "vim.fn.expand(vim.fn.stdpath('state') .. '/sessions/')"; # Standard session location
-        options = [ "buffers" "curdir" "tabpages" "winsize" "help" "globals" "skiprtp" ];
+        options = [
+          "buffers"
+          "curdir"
+          "tabpages"
+          "winsize"
+          "help"
+          "globals"
+          "skiprtp"
+        ];
       };
     };
 
@@ -306,11 +353,36 @@
               ╚═╝  ╚═══╝╚═╝╚═╝  ╚═╝  ╚═══╝  ╚═╝╚═╝     ╚═╝
             '';
             keys = [
-              { icon = " "; key = "f"; desc = "Find File"; action = ":Telescope find_files"; }
-              { icon = " "; key = "n"; desc = "New File"; action = ":ene | startinsert"; }
-              { icon = " "; key = "c"; desc = "Config"; action = ":Oil ."; }
-              { icon = " "; key = "s"; desc = "Restore Session"; action = ''lua require("persistence").load()''; }
-              { icon = " "; key = "q"; desc = "Quit"; action = ":qa"; }
+              {
+                icon = " ";
+                key = "f";
+                desc = "Find File";
+                action = ":Telescope find_files";
+              }
+              {
+                icon = " ";
+                key = "n";
+                desc = "New File";
+                action = ":ene | startinsert";
+              }
+              {
+                icon = " ";
+                key = "c";
+                desc = "Config";
+                action = ":Oil .";
+              }
+              {
+                icon = " ";
+                key = "s";
+                desc = "Restore Session";
+                action = ''lua require("persistence").load()'';
+              }
+              {
+                icon = " ";
+                key = "q";
+                desc = "Quit";
+                action = ":qa";
+              }
             ];
           };
         };
@@ -328,7 +400,7 @@
         # Allow lowercase by using the case-insensitive flag (?i)
         highlight = {
           # This regex finds the keywords anywhere in the comment
-          pattern = ''[^\w](?i)(KEYWORDS):''; 
+          pattern = ''[^\w](?i)(KEYWORDS):'';
         };
         search = {
           # This ensures ripgrep (used by Telescope) also ignores case
@@ -343,7 +415,7 @@
           pattern = ''\b(?i)(KEYWORDS):'';
         };
       };
-    }; 
+    };
 
     treesitter-context = {
       enable = true;
@@ -390,7 +462,7 @@
         smear_between_buffers = false;
         smear_between_lines = false;
         # Adjusting the spring for a snappier feel
-        stiffness = 0.8; 
+        stiffness = 0.8;
         trailing_stiffness = 0.5;
       };
     };
@@ -399,8 +471,11 @@
       enable = true;
       settings = {
         enable_builtin = true; # Uses telescope for pickers
-        default_remote = [ "upstream" "origin" ];
-        ssh_only = true;       # Recommended for Nix/SSH setups
+        default_remote = [
+          "upstream"
+          "origin"
+        ];
+        ssh_only = true; # Recommended for Nix/SSH setups
       };
     };
 
@@ -419,7 +494,7 @@
         label = {
           uppercase = false;
           # Style labels to match TokyoNight theme
-          style = "overlay"; 
+          style = "overlay";
         };
       };
     };
@@ -436,7 +511,10 @@
           nix = [ "nixfmt" ]; # Requires pkgs.nixfmt-rfc-style
           rust = [ "rustfmt" ];
           lua = [ "stylua" ];
-          javascript = [ "prettierd" "prettier" ];
+          javascript = [
+            "prettierd"
+            "prettier"
+          ];
         };
       };
     };
@@ -444,44 +522,130 @@
 
   keymaps = [
     {
-      mode = [ "n" "v" ];
+      mode = [
+        "n"
+        "v"
+      ];
       key = "<Space>";
       action = "<Nop>";
       options.silent = true;
     }
 
     # --- File / Find (<leader>f) ---
-    { mode = "n"; key = "<leader>ff"; action = "<cmd>Telescope find_files<cr>"; options.desc = "Find Files"; }
-    { mode = "n"; key = "<leader>fr"; action = "<cmd>Telescope oldfiles<cr>"; options.desc = "Recent"; }
-    { mode = "n"; key = "<leader>fb"; action = "<cmd>Telescope buffers<cr>"; options.desc = "Buffers"; }
-    { mode = "n"; key = "<leader>fg"; action = "<cmd>Telescope live_grep<cr>"; options.desc = "Grep (Root)"; }
+    {
+      mode = "n";
+      key = "<leader>ff";
+      action = "<cmd>Telescope find_files<cr>";
+      options.desc = "Find Files";
+    }
+    {
+      mode = "n";
+      key = "<leader>fr";
+      action = "<cmd>Telescope oldfiles<cr>";
+      options.desc = "Recent";
+    }
+    {
+      mode = "n";
+      key = "<leader>fb";
+      action = "<cmd>Telescope buffers<cr>";
+      options.desc = "Buffers";
+    }
+    {
+      mode = "n";
+      key = "<leader>fg";
+      action = "<cmd>Telescope live_grep<cr>";
+      options.desc = "Grep (Root)";
+    }
 
     # --- Code / LSP (<leader>c) ---
-    { mode = "n"; key = "<leader>cd"; action = "lua vim.diagnostic.open_float()"; options.desc = "Line Diagnostics"; }
-    { mode = "n"; key = "<leader>ca"; action = "lua vim.lsp.buf.code_action()"; options.desc = "Code Action"; }
-    { mode = "n"; key = "<leader>cr"; action = "lua vim.lsp.buf.rename()"; options.desc = "Rename"; }
+    {
+      mode = "n";
+      key = "<leader>cd";
+      action = "lua vim.diagnostic.open_float()";
+      options.desc = "Line Diagnostics";
+    }
+    {
+      mode = "n";
+      key = "<leader>ca";
+      action = "lua vim.lsp.buf.code_action()";
+      options.desc = "Code Action";
+    }
+    {
+      mode = "n";
+      key = "<leader>cr";
+      action = "lua vim.lsp.buf.rename()";
+      options.desc = "Rename";
+    }
 
     # --- UI / Toggles (<leader>u) ---
-    { mode = "n"; key = "<leader>uf"; action = "<cmd>lua require('conform').format()<cr>"; options.desc = "Format Document"; }
-    { mode = "n"; key = "<leader>us"; action = "<cmd>set spell!<cr>"; options.desc = "Toggle Spelling"; }
-    { mode = "n"; key = "<leader>uw"; action = "<cmd>set wrap!<cr>"; options.desc = "Toggle Word Wrap"; }
-    { mode = "n"; key = "<leader>ul"; action = "<cmd>set relativenumber!<cr>"; options.desc = "Toggle Relative Line Numbers"; }
+    {
+      mode = "n";
+      key = "<leader>uf";
+      action = "<cmd>lua require('conform').format()<cr>";
+      options.desc = "Format Document";
+    }
+    {
+      mode = "n";
+      key = "<leader>us";
+      action = "<cmd>set spell!<cr>";
+      options.desc = "Toggle Spelling";
+    }
+    {
+      mode = "n";
+      key = "<leader>uw";
+      action = "<cmd>set wrap!<cr>";
+      options.desc = "Toggle Word Wrap";
+    }
+    {
+      mode = "n";
+      key = "<leader>ul";
+      action = "<cmd>set relativenumber!<cr>";
+      options.desc = "Toggle Relative Line Numbers";
+    }
 
     # --- Windows / Buffers ---
-    { mode = "n"; key = "<leader>bb"; action = "<cmd>e #<cr>"; options.desc = "Switch to Other Buffer"; }
-    { mode = "n"; key = "<leader>bd"; action = "<cmd>bdelete<cr>"; options.desc = "Delete Buffer"; }
-    
-    # --- Search / Todo (<leader>s) ---
-    { mode = "n"; key = "<leader>st"; action = "<cmd>TodoTelescope<cr>"; options.desc = "Todo (Telescope)"; }
-    { mode = "n"; key = "<leader>sn"; action = "<cmd>Noice<cr>"; options.desc = "Noice Messages"; }
     {
-      mode = [ "n" "x" "o" ];
+      mode = "n";
+      key = "<leader>bb";
+      action = "<cmd>e #<cr>";
+      options.desc = "Switch to Other Buffer";
+    }
+    {
+      mode = "n";
+      key = "<leader>bd";
+      action = "<cmd>bdelete<cr>";
+      options.desc = "Delete Buffer";
+    }
+
+    # --- Search / Todo (<leader>s) ---
+    {
+      mode = "n";
+      key = "<leader>st";
+      action = "<cmd>TodoTelescope<cr>";
+      options.desc = "Todo (Telescope)";
+    }
+    {
+      mode = "n";
+      key = "<leader>sn";
+      action = "<cmd>Noice<cr>";
+      options.desc = "Noice Messages";
+    }
+    {
+      mode = [
+        "n"
+        "x"
+        "o"
+      ];
       key = "s";
       action = ''lua require("flash").jump()'';
       options.desc = "Flash";
     }
     {
-      mode = [ "n" "x" "o" ];
+      mode = [
+        "n"
+        "x"
+        "o"
+      ];
       key = "S";
       action = ''lua require("flash").treesitter()'';
       options.desc = "Flash Treesitter";
@@ -493,7 +657,10 @@
       options.desc = "Remote Flash";
     }
     {
-      mode = [ "x" "o" ];
+      mode = [
+        "x"
+        "o"
+      ];
       key = "R";
       action = ''lua require("flash").treesitter_search()'';
       options.desc = "Treesitter Search";
