@@ -2,12 +2,16 @@
 {
   extraPackages = with pkgs; [
     nixfmt
+    wl-clipboard
   ];
 
   globals.mapleader = " ";
   globals.maplocalleader = " ";
 
   opts = {
+    wrap = false;
+    clipboard = "unnamedplus";
+
     tabstop = 2;
     shiftwidth = 2;
     expandtab = true;
@@ -42,11 +46,11 @@
       text = {
         "__raw" = ''
           {
-                    [vim.diagnostic.severity.ERROR] = " ",
-                    [vim.diagnostic.severity.WARN]  = " ",
-                    [vim.diagnostic.severity.HINT]  = " ",
-                    [vim.diagnostic.severity.INFO]  = " ",
-                  }'';
+            [vim.diagnostic.severity.ERROR] = " ",
+            [vim.diagnostic.severity.WARN]  = " ",
+            [vim.diagnostic.severity.HINT]  = " ",
+            [vim.diagnostic.severity.INFO]  = " ",
+          }'';
       };
     };
     # Show diagnostic source (e.g., "nixd") in the hover popup
