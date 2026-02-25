@@ -172,6 +172,7 @@
           installCargo = false; # Let Nix manage cargo/rustc
           installRustc = false;
           settings = {
+            diagnostics.enable = true;
             procMacro.enable = true;
             checkOnSave = {
               command = "check";
