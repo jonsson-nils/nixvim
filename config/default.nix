@@ -178,6 +178,10 @@
               command = "check";
               enable = true;
             };
+            cargo = {
+              loadOutDirsFromCheck = true;
+              allFeatures = true;
+            };
           };
         };
 
