@@ -181,6 +181,9 @@
             cargo = {
               loadOutDirsFromCheck = true;
               allFeatures = true;
+              extraEnv = {
+                CARGO_TARGET_DIR = "target/analyzer";
+              };
             };
           };
         };
