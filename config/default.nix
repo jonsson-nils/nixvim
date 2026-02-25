@@ -171,7 +171,13 @@
           enable = true;
           installCargo = false; # Let Nix manage cargo/rustc
           installRustc = false;
-          settings.procMacro.enable = true;
+          settings = {
+            procMacro.enable = true;
+            checkOnSave = {
+              command = "check";
+              enable = true;
+            };
+          };
         };
 
         # Nix: Uses nixd (highly recommended for flakes)
