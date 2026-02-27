@@ -102,6 +102,50 @@
     options.desc = "Next Buffer";
   }
 
+  # Windows
+  {
+    mode = "n";
+    key = "<leader>wh";
+    action = "<C-w>h";
+    options.desc = "Go to Left Window";
+  }
+  {
+    mode = "n";
+    key = "<leader>wj";
+    action = "<C-w>j";
+    options.desc = "Go to Lower Window";
+  }
+  {
+    mode = "n";
+    key = "<leader>wk";
+    action = "<C-w>k";
+    options.desc = "Go to Upper Window";
+  }
+  {
+    mode = "n";
+    key = "<leader>wl";
+    action = "<C-w>l";
+    options.desc = "Go to Right Window";
+  }
+  {
+    mode = "n";
+    key = "<leader>wv";
+    action = "<C-w>v";
+    options.desc = "Split Window Vertically";
+  }
+  {
+    mode = "n";
+    key = "<leader>ws";
+    action = "<C-w>s";
+    options.desc = "Split Window Horizontally";
+  }
+  {
+    mode = "n";
+    key = "<leader>wd";
+    action = "<C-w>c";
+    options.desc = "Close Window";
+  }
+
   # --- Search / Todo (<leader>s) ---
   {
     mode = "n";
@@ -149,47 +193,5 @@
     key = "R";
     action = ''<cmd>lua require("flash").treesitter_search()<cr>'';
     options.desc = "Treesitter Search";
-  }
-  {
-    mode = "n";
-    key = "<leader>wh";
-    action = "<C-w>h";
-    options.desc = "Go to Left Window";
-  }
-  {
-    mode = "n";
-    key = "<leader>wj";
-    action = "<C-w>j";
-    options.desc = "Go to Lower Window";
-  }
-  {
-    mode = "n";
-    key = "<leader>wk";
-    action = "<C-w>k";
-    options.desc = "Go to Upper Window";
-  }
-  {
-    mode = "n";
-    key = "<leader>wl";
-    action = "<C-w>l";
-    options.desc = "Go to Right Window";
-  }
-  {
-    mode = "n";
-    key = "<leader>wv";
-    action = "<C-w>v";
-    options.desc = "Split Window Vertically";
-  }
-  {
-    mode = "n";
-    key = "<leader>ws";
-    action = "<C-w>s";
-    options.desc = "Split Window Horizontally";
-  }
-  {
-    mode = "n";
-    key = "<leader>wd";
-    action = "<C-w>c";
-    options.desc = "Close Window";
   }
 ]
