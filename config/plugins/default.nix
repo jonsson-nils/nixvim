@@ -14,6 +14,8 @@
     enable = true;
     # Optional: styling and settings
     settings = {
+      delay = 100;
+
       win = {
         border = "single"; # Options: "none", "single", "double", "shadow"
       };
@@ -34,6 +36,10 @@
         {
           __unkeyed-1 = "<leader>g";
           group = "Git";
+        }
+        {
+          __unkeyed-1 = "<leader>w";
+          group = "Window";
         }
         {
           __unkeyed-1 = "<leader>gh";

@@ -40,19 +40,19 @@
   {
     mode = "n";
     key = "<leader>cd";
-    action = "lua vim.diagnostic.open_float()";
+    action = "<cmd>lua vim.diagnostic.open_float()<cr>";
     options.desc = "Line Diagnostics";
   }
   {
     mode = "n";
     key = "<leader>ca";
-    action = "lua vim.lsp.buf.code_action()";
+    action = "<cmd>lua vim.lsp.buf.code_action()<cr>";
     options.desc = "Code Action";
   }
   {
     mode = "n";
     key = "<leader>cr";
-    action = "lua vim.lsp.buf.rename()";
+    action = "<cmd>lua vim.lsp.buf.rename()<cr>";
     options.desc = "Rename";
   }
 
@@ -116,7 +116,7 @@
       "o"
     ];
     key = "s";
-    action = ''lua require("flash").jump()'';
+    action = ''<cmd>lua require("flash").jump()<cr>'';
     options.desc = "Flash";
   }
   {
@@ -126,13 +126,13 @@
       "o"
     ];
     key = "S";
-    action = ''lua require("flash").treesitter()'';
+    action = ''<cmd>lua require("flash").treesitter()<cr>'';
     options.desc = "Flash Treesitter";
   }
   {
     mode = "o";
     key = "r";
-    action = ''lua require("flash").remote()'';
+    action = ''<cmd>lua require("flash").remote()<cr>'';
     options.desc = "Remote Flash";
   }
   {
@@ -141,7 +141,49 @@
       "o"
     ];
     key = "R";
-    action = ''lua require("flash").treesitter_search()'';
+    action = ''<cmd>lua require("flash").treesitter_search()<cr>'';
     options.desc = "Treesitter Search";
+  }
+  {
+    mode = "n";
+    key = "<leader>wh";
+    action = "<C-w>h";
+    options.desc = "Go to Left Window";
+  }
+  {
+    mode = "n";
+    key = "<leader>wj";
+    action = "<C-w>j";
+    options.desc = "Go to Lower Window";
+  }
+  {
+    mode = "n";
+    key = "<leader>wk";
+    action = "<C-w>k";
+    options.desc = "Go to Upper Window";
+  }
+  {
+    mode = "n";
+    key = "<leader>wl";
+    action = "<C-w>l";
+    options.desc = "Go to Right Window";
+  }
+  {
+    mode = "n";
+    key = "<leader>wv";
+    action = "<C-w>v";
+    options.desc = "Split Window Vertically";
+  }
+  {
+    mode = "n";
+    key = "<leader>ws";
+    action = "<C-w>s";
+    options.desc = "Split Window Horizontally";
+  }
+  {
+    mode = "n";
+    key = "<leader>wd";
+    action = "<C-w>c";
+    options.desc = "Close Window";
   }
 ]
