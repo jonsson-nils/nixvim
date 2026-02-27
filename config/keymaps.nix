@@ -44,6 +44,14 @@
     options.desc = "Rename";
   }
 
+  # Git
+  {
+    mode = "n";
+    key = "<leader>gg";
+    action = "<cmd>Git<cr>";
+    options.desc = "Git";
+  }
+
   # --- UI / Toggles (<leader>u) ---
   {
     mode = "n";
