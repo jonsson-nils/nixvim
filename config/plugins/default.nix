@@ -110,7 +110,33 @@
   blink-cmp = {
     enable = true;
     settings = {
-      keymap.preset = "default";
+      keymap = {
+        preset = "none";
+
+        "<Tab>" = [
+          "accept" # Accept the completion
+          "snippet_forward" # Or jump forward in a snippet
+          "fallback" # Or do a literal Tab
+        ];
+
+        "<S-Tab>" = [
+          "snippet_backward"
+          "fallback"
+        ];
+        "<Up>" = [
+          "select_prev"
+          "fallback"
+        ];
+        "<Down>" = [
+          "select_next"
+          "fallback"
+        ];
+        "<C-space>" = [
+          "show"
+          "show_documentation"
+          "hide_documentation"
+        ];
+      };
 
       snippets.preset = "luasnip";
 
