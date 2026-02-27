@@ -255,23 +255,19 @@
         markdown = true;
       };
 
-      # --- AI: Enhanced Text Objects ---
-      # Adds "around/inside" for functions, classes, and more
       ai = {
         n_lines = 500;
       };
 
-      # --- Surround: Add/Delete/Replace Brackets/Quotes ---
-      # Use `sa` (add), `sd` (delete), `sr` (replace)
       surround = {
         mappings = {
-          add = "sa";
-          delete = "sd";
-          find = "sf";
-          find_left = "sF";
-          highlight = "sh";
-          replace = "sr";
-          update_n_lines = "sn";
+          add = "gsa";
+          delete = "gsd";
+          find = "gsf";
+          find_left = "gsF";
+          highlight = "gsh";
+          replace = "gsr";
+          update_n_lines = "gsn";
         };
       };
     };
