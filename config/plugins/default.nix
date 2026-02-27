@@ -10,6 +10,8 @@
   notify.enable = true;
   twilight.enable = true;
   render-markdown.enable = true;
+  ollama.enable = true;
+  blink-compat.enable = true;
 
   treesitter = {
     enable = true;
@@ -125,9 +127,11 @@
           "snippet_forward" # Or jump forward in a snippet
           "fallback" # Or do a literal Tab
         ];
-
         "<S-Tab>" = [
-          "snippet_backward"
+          "fallback"
+        ];
+        "<Esc>" = [
+          "hide"
           "fallback"
         ];
         "<Up>" = [
@@ -147,12 +151,34 @@
 
       snippets.preset = "luasnip";
 
-      sources.default = [
-        "lsp"
-        "path"
-        "snippets"
-        "buffer"
-      ];
+      sources = {
+        default = [
+          "lsp"
+          "path"
+          "snippets"
+          "buffer"
+          "avante_commands"
+          "avante_mentions"
+          "avante_files"
+        ];
+        providers = {
+          avante_commands = {
+            name = "avante_commands";
+            module = "blink.compat.source";
+            score_offset = 90;
+          };
+          avante_files = {
+            name = "avante_files";
+            module = "blink.compat.source";
+            score_offset = 100;
+          };
+          avante_mentions = {
+            name = "avante_mentions";
+            module = "blink.compat.source";
+            score_offset = 1000;
+          };
+        };
+      };
 
       appearance = {
         use_nvim_cmp_as_default = true;
@@ -161,7 +187,7 @@
 
       completion = {
         documentation.auto_show = true;
-        ghost_text.enabled = true;
+        ghost_text.enabled = false;
       };
     };
   };
@@ -535,30 +561,30 @@
     enable = true;
     settings = {
       provider = "ollama";
+      # Optional: use ollama for suggestions too
+      auto_suggestions_provider = "ollama-suggest";
       providers = {
-        ollama = {
-          __inherited_from = "openai"; # Use OpenAI-compatible protocol
-          api_key_name = ""; # No key needed for local Ollama
-          endpoint = "http://127.0.0.1";
-          model = "qwen2.5-coder:14b"; # Match the model you pulled
-          parse_curl_args = ''
-            function(opts, code_opts)
-              return {
-                url = opts.endpoint .. "/chat/completions",
-                headers = {
-                  ["Accept"] = "application/json",
-                  ["Content-Type"] = "application/json",
-                },
-                body = {
-                  model = opts.model,
-                  messages = require("avante.providers").copilot.parse_messages(code_opts),
-                  max_tokens = 2048,
-                  stream = true,
-                },
-              }
-            end
-          '';
+        ollama-suggest = {
+          __inherited_from = "ollama";
+          model = "qwen2.5-coder:1.5b";
+          is_env_set = {
+            __raw = ''require("avante.providers.ollama").check_endpoint_alive'';
+          };
         };
+        ollama = {
+          model = "qwen2.5-coder:7b";
+          # This bypasses the API key requirement for local models
+          is_env_set = {
+            __raw = ''require("avante.providers.ollama").check_endpoint_alive'';
+          };
+        };
+      };
+
+      mappings.suggestion = {
+        accept = "<S-Tab>";
+        next = "<M-]>";
+        prev = "<M-[>";
+        dismiss = "<C-]]>";
       };
     };
   };
