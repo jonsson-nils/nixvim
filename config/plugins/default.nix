@@ -61,6 +61,11 @@
           __unkeyed-1 = "<leader>z";
           group = "Zen";
         }
+        {
+          __unkeyed-1 = "gs";
+          group = "Surround";
+          icon = "   ";
+        }
       ];
     };
   };
