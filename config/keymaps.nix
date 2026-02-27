@@ -10,6 +10,14 @@
     options.silent = true;
   }
 
+  {
+    mode = [
+      "n"
+    ];
+    key = "<leader><leader>";
+    action = "<cmd>Telescope<cr>";
+  }
+
   # --- File / Find (<leader>f) ---
   {
     mode = "n";
@@ -50,6 +58,14 @@
     key = "<leader>gg";
     action = "<cmd>Git<cr>";
     options.desc = "Git";
+  }
+
+  # Zen
+  {
+    mode = "n";
+    key = "<leader>zz";
+    action = "<cmd>ZenMode<cr>";
+    options.desc = "Enter Zen";
   }
 
   # --- UI / Toggles (<leader>u) ---
@@ -163,7 +179,7 @@
   # --- Search / Todo (<leader>s) ---
   {
     mode = "n";
-    key = "<leader>fg";
+    key = "<leader>sg";
     action = "<cmd>Telescope live_grep<cr>";
     options.desc = "Grep (Root)";
   }
