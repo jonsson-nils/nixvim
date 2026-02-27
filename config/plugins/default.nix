@@ -1,6 +1,15 @@
 { pkgs, ... }:
 {
   web-devicons.enable = true;
+  trouble.enable = true;
+  oil.enable = true;
+  fidget.enable = true;
+  diffview.enable = true;
+  fugitive.enable = true;
+  nui.enable = true;
+  notify.enable = true;
+  twilight.enable = true;
+  render-markdown.enable = true;
 
   treesitter = {
     enable = true;
@@ -69,8 +78,6 @@
       ];
     };
   };
-
-  trouble.enable = true;
 
   gitsigns = {
     enable = true;
@@ -206,17 +213,11 @@
     fromVscode = [ { } ];
   };
 
-  oil = {
-    enable = true;
-  };
-
   # --- UI & Status ---
   lualine = {
     enable = true;
     settings.options.theme = "tokyonight"; # Matches your theme
   };
-
-  fidget.enable = true; # LSP progress notifications
 
   bufferline = {
     enable = true;
@@ -232,10 +233,6 @@
       ];
     };
   };
-
-  # --- Git Tools ---
-  diffview.enable = true;
-  fugitive.enable = true;
 
   # --- Productivity & Utilities ---
   undotree = {
@@ -267,10 +264,6 @@
       };
     };
   };
-
-  # Required UI dependencies for Noice
-  nui.enable = true;
-  notify.enable = true;
 
   mini = {
     enable = true;
@@ -330,9 +323,6 @@
       };
     };
   };
-
-  # Companion plugin for dimming inactive code
-  twilight.enable = true;
 
   persistence = {
     enable = true;
