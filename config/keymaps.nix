@@ -109,9 +109,9 @@
   }
   {
     mode = "n";
-    key = "<leader>bd";
+    key = "<leader>bq";
     action = "<cmd>bdelete<cr>";
-    options.desc = "Delete Buffer";
+    options.desc = "Close Buffer";
   }
   {
     mode = "n";
@@ -165,14 +165,8 @@
   }
   {
     mode = "n";
-    key = "<leader>wd";
-    action = "<C-w>c";
-    options.desc = "Close Window";
-  }
-  {
-    mode = "n";
     key = "<leader>wq";
-    action = "<cmd>qall<cr>";
+    action = "<C-w>c";
     options.desc = "Close Window";
   }
 
