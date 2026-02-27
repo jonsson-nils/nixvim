@@ -1,4 +1,4 @@
-{ ... }:
+{ pkgs, ... }:
 {
   web-devicons.enable = true;
 
@@ -60,6 +60,7 @@
   };
 
   trouble.enable = true;
+
   gitsigns = {
     enable = true;
     settings = {
@@ -91,6 +92,32 @@
       "<leader>gs" = {
         action = "git_status";
         options.desc = "Search Git Status (Diff)";
+      };
+    };
+  };
+
+  blink-cmp = {
+    enable = true;
+    settings = {
+      keymap.preset = "default";
+
+      snippets.preset = "luasnip";
+
+      sources.default = [
+        "lsp"
+        "path"
+        "snippets"
+        "buffer"
+      ];
+
+      appearance = {
+        use_nvim_cmp_as_default = true;
+        nerd_font_variant = "mono";
+      };
+
+      completion = {
+        documentation.auto_show = true;
+        ghost_text.enabled = true;
       };
     };
   };
@@ -135,6 +162,11 @@
       # Tailwind: Uses tailwindcss-language-server
       tailwindcss.enable = true;
     };
+  };
+
+  luasnip = {
+    enable = true;
+    fromVscode = [ { } ];
   };
 
   oil = {
