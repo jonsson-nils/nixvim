@@ -23,12 +23,6 @@
     action = "<cmd>Telescope oldfiles<cr>";
     options.desc = "Recent";
   }
-  {
-    mode = "n";
-    key = "<leader>fg";
-    action = "<cmd>Telescope live_grep<cr>";
-    options.desc = "Grep (Root)";
-  }
 
   # --- Code / LSP (<leader>c) ---
   {
@@ -51,6 +45,12 @@
   }
 
   # --- UI / Toggles (<leader>u) ---
+  {
+    mode = "n";
+    key = "<leader>un";
+    action = "<cmd>Noice<cr>";
+    options.desc = "Noice Messages";
+  }
   {
     mode = "n";
     key = "<leader>uf";
@@ -145,20 +145,28 @@
     action = "<C-w>c";
     options.desc = "Close Window";
   }
+  {
+    mode = "n";
+    key = "<leader>wq";
+    action = "<cmd>qall<cr>";
+    options.desc = "Close Window";
+  }
 
   # --- Search / Todo (<leader>s) ---
+  {
+    mode = "n";
+    key = "<leader>fg";
+    action = "<cmd>Telescope live_grep<cr>";
+    options.desc = "Grep (Root)";
+  }
   {
     mode = "n";
     key = "<leader>st";
     action = "<cmd>TodoTelescope<cr>";
     options.desc = "Todo (Telescope)";
   }
-  {
-    mode = "n";
-    key = "<leader>sn";
-    action = "<cmd>Noice<cr>";
-    options.desc = "Noice Messages";
-  }
+
+  # Jumps
   {
     mode = [
       "n"
