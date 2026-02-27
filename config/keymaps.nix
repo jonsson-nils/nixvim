@@ -25,12 +25,6 @@
   }
   {
     mode = "n";
-    key = "<leader>fb";
-    action = "<cmd>Telescope buffers<cr>";
-    options.desc = "Buffers";
-  }
-  {
-    mode = "n";
     key = "<leader>fg";
     action = "<cmd>Telescope live_grep<cr>";
     options.desc = "Grep (Root)";
@@ -82,18 +76,30 @@
     options.desc = "Toggle Relative Line Numbers";
   }
 
-  # --- Windows / Buffers ---
+  # --- Buffers ---
   {
     mode = "n";
     key = "<leader>bb";
-    action = "<cmd>e #<cr>";
-    options.desc = "Switch to Other Buffer";
+    action = "<cmd>Telescope buffers<cr>";
+    options.desc = "Buffers";
   }
   {
     mode = "n";
     key = "<leader>bd";
     action = "<cmd>bdelete<cr>";
     options.desc = "Delete Buffer";
+  }
+  {
+    mode = "n";
+    key = "<leader>bj";
+    action = "<cmd>bprevious<cr>";
+    options.desc = "Previous Buffer";
+  }
+  {
+    mode = "n";
+    key = "<leader>bk";
+    action = "<cmd>bnext<cr>";
+    options.desc = "Next Buffer";
   }
 
   # --- Search / Todo (<leader>s) ---
