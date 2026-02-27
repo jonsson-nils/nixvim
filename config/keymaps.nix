@@ -1,0 +1,147 @@
+{ ... }:
+[
+  {
+    mode = [
+      "n"
+      "v"
+    ];
+    key = "<Space>";
+    action = "<Nop>";
+    options.silent = true;
+  }
+
+  # --- File / Find (<leader>f) ---
+  {
+    mode = "n";
+    key = "<leader>ff";
+    action = "<cmd>Telescope find_files<cr>";
+    options.desc = "Find Files";
+  }
+  {
+    mode = "n";
+    key = "<leader>fr";
+    action = "<cmd>Telescope oldfiles<cr>";
+    options.desc = "Recent";
+  }
+  {
+    mode = "n";
+    key = "<leader>fb";
+    action = "<cmd>Telescope buffers<cr>";
+    options.desc = "Buffers";
+  }
+  {
+    mode = "n";
+    key = "<leader>fg";
+    action = "<cmd>Telescope live_grep<cr>";
+    options.desc = "Grep (Root)";
+  }
+
+  # --- Code / LSP (<leader>c) ---
+  {
+    mode = "n";
+    key = "<leader>cd";
+    action = "lua vim.diagnostic.open_float()";
+    options.desc = "Line Diagnostics";
+  }
+  {
+    mode = "n";
+    key = "<leader>ca";
+    action = "lua vim.lsp.buf.code_action()";
+    options.desc = "Code Action";
+  }
+  {
+    mode = "n";
+    key = "<leader>cr";
+    action = "lua vim.lsp.buf.rename()";
+    options.desc = "Rename";
+  }
+
+  # --- UI / Toggles (<leader>u) ---
+  {
+    mode = "n";
+    key = "<leader>uf";
+    action = "<cmd>lua require('conform').format()<cr>";
+    options.desc = "Format Document";
+  }
+  {
+    mode = "n";
+    key = "<leader>us";
+    action = "<cmd>set spell!<cr>";
+    options.desc = "Toggle Spelling";
+  }
+  {
+    mode = "n";
+    key = "<leader>uw";
+    action = "<cmd>set wrap!<cr>";
+    options.desc = "Toggle Word Wrap";
+  }
+  {
+    mode = "n";
+    key = "<leader>ul";
+    action = "<cmd>set relativenumber!<cr>";
+    options.desc = "Toggle Relative Line Numbers";
+  }
+
+  # --- Windows / Buffers ---
+  {
+    mode = "n";
+    key = "<leader>bb";
+    action = "<cmd>e #<cr>";
+    options.desc = "Switch to Other Buffer";
+  }
+  {
+    mode = "n";
+    key = "<leader>bd";
+    action = "<cmd>bdelete<cr>";
+    options.desc = "Delete Buffer";
+  }
+
+  # --- Search / Todo (<leader>s) ---
+  {
+    mode = "n";
+    key = "<leader>st";
+    action = "<cmd>TodoTelescope<cr>";
+    options.desc = "Todo (Telescope)";
+  }
+  {
+    mode = "n";
+    key = "<leader>sn";
+    action = "<cmd>Noice<cr>";
+    options.desc = "Noice Messages";
+  }
+  {
+    mode = [
+      "n"
+      "x"
+      "o"
+    ];
+    key = "s";
+    action = ''lua require("flash").jump()'';
+    options.desc = "Flash";
+  }
+  {
+    mode = [
+      "n"
+      "x"
+      "o"
+    ];
+    key = "S";
+    action = ''lua require("flash").treesitter()'';
+    options.desc = "Flash Treesitter";
+  }
+  {
+    mode = "o";
+    key = "r";
+    action = ''lua require("flash").remote()'';
+    options.desc = "Remote Flash";
+  }
+  {
+    mode = [
+      "x"
+      "o"
+    ];
+    key = "R";
+    action = ''lua require("flash").treesitter_search()'';
+    options.desc = "Treesitter Search";
+  }
+]
