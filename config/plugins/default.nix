@@ -535,7 +535,7 @@
     enable = true;
     settings = {
       provider = "ollama";
-      vendors = {
+      providers = {
         ollama = {
           __inherited_from = "openai"; # Use OpenAI-compatible protocol
           api_key_name = ""; # No key needed for local Ollama
