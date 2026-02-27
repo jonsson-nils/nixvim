@@ -530,4 +530,36 @@
       };
     };
   };
+
+  avante = {
+    enable = true;
+    settings = {
+      provider = "ollama";
+      vendors = {
+        ollama = {
+          __inherited_from = "openai"; # Use OpenAI-compatible protocol
+          api_key_name = ""; # No key needed for local Ollama
+          endpoint = "http://127.0.0.1";
+          model = "qwen2.5-coder:14b"; # Match the model you pulled
+          parse_curl_args = ''
+            function(opts, code_opts)
+              return {
+                url = opts.endpoint .. "/chat/completions",
+                headers = {
+                  ["Accept"] = "application/json",
+                  ["Content-Type"] = "application/json",
+                },
+                body = {
+                  model = opts.model,
+                  messages = require("avante.providers").copilot.parse_messages(code_opts),
+                  max_tokens = 2048,
+                  stream = true,
+                },
+              }
+            end
+          '';
+        };
+      };
+    };
+  };
 }
