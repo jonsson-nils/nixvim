@@ -109,6 +109,12 @@
   }
   {
     mode = "n";
+    key = "<leader>bw";
+    action = "<cmd>w<cr>";
+    options.desc = "Write Buffer";
+  }
+  {
+    mode = "n";
     key = "<leader>bq";
     action = "<cmd>bdelete<cr>";
     options.desc = "Close Buffer";
