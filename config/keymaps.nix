@@ -51,6 +51,12 @@
     action = "<cmd>lua vim.lsp.buf.rename()<cr>";
     options.desc = "Rename";
   }
+  {
+    mode = "n";
+    key = "<leader>cf";
+    action = "<cmd>lua require('conform').format()<cr>";
+    options.desc = "Format Document";
+  }
 
   # Git
   {
@@ -74,12 +80,6 @@
     key = "<leader>un";
     action = "<cmd>Noice<cr>";
     options.desc = "Noice Messages";
-  }
-  {
-    mode = "n";
-    key = "<leader>uf";
-    action = "<cmd>lua require('conform').format()<cr>";
-    options.desc = "Format Document";
   }
   {
     mode = "n";
