@@ -204,6 +204,7 @@
       # Rust: Uses rust-analyzer
       rust_analyzer = {
         enable = true;
+        package = null;
         installCargo = false; # Let Nix manage cargo/rustc
         installRustc = false;
         settings = {
