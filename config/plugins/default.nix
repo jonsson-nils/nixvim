@@ -222,6 +222,9 @@
             };
           };
         };
+        onAttach.function = ''
+          client.server_capabilities.semanticTokensProvider = nil
+        '';
       };
 
       # Nix: Uses nixd (highly recommended for flakes)
@@ -563,7 +566,7 @@
     settings = {
       provider = "ollama";
       # Optional: use ollama for suggestions too
-      auto_suggestions_provider = "ollama-suggest";
+      auto_suggestions_provider = "ollama";
       providers = {
         ollama-suggest = {
           __inherited_from = "ollama";
