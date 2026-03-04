@@ -24,4 +24,7 @@
   termguicolors = true; # Enable 24-bit RGB colors
   signcolumn = "yes"; # Always show the sign column to prevent "flickering"
   laststatus = 3; # Global statusline (Standard in modern Neovim)
+
+  sidescrolloff = 0;
+  sidescroll = 1;
 }
