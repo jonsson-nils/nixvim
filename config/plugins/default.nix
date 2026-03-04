@@ -280,11 +280,6 @@
     };
   };
 
-  hop = {
-    enable = true;
-    settings.keys = "etovxqpdygfblzhckisuran"; # Home row priority
-  };
-
   noice = {
     enable = true;
     settings = {
@@ -532,9 +527,33 @@
   flash = {
     enable = true;
     settings = {
+      after = ''
+        function()
+          vim.cmd("normal! zz")
+        end
+      '';
+      modes = {
+        treesitter = {
+          enabled = true;
+          jump.pos = "start";
+          label = {
+            before = true;
+            after = true;
+          };
+        };
+        search.enabled = true;
+        char = {
+          enabled = true;
+          jump_labels = true;
+          multi_line = true;
+        };
+      };
+      rainbow = {
+        enabled = true;
+        shade = 5;
+      };
       labels = "asdfghjklqwertyuiopzxcvbnm";
       search = {
-        # Use same logic as LazyVim (automatic jump on 1 char)
         mode = "exact";
       };
       jump = {

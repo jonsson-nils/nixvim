@@ -18,6 +18,32 @@
     action = "<cmd>Telescope<cr>";
   }
 
+  # --- Improved scrolling ---
+  {
+    mode = "n";
+    key = "<C-d>";
+    action = "<C-d>zz";
+    options.desc = "Scroll Down and Center";
+  }
+  {
+    mode = "n";
+    key = "<C-u>";
+    action = "<C-u>zz";
+    options.desc = "Scroll Up and Center";
+  }
+  {
+    mode = "n";
+    key = "n";
+    action = "nzzzv";
+    options.desc = "Next search result (centered)";
+  }
+  {
+    mode = "n";
+    key = "N";
+    action = "Nzzzv";
+    options.desc = "Previous search result (centered)";
+  }
+
   # --- File / Find (<leader>f) ---
   {
     mode = "n";
@@ -36,25 +62,25 @@
   {
     mode = "n";
     key = "<leader>cd";
-    action = "<cmd>lua vim.diagnostic.open_float()<cr>";
+    action.__raw = "vim.diagnostic.open_float";
     options.desc = "Line Diagnostics";
   }
   {
     mode = "n";
     key = "<leader>ca";
-    action = "<cmd>lua vim.lsp.buf.code_action()<cr>";
+    action.__raw = "vim.lsp.buf.code_action";
     options.desc = "Code Action";
   }
   {
     mode = "n";
     key = "<leader>cr";
-    action = "<cmd>lua vim.lsp.buf.rename()<cr>";
+    action.__raw = "vim.lsp.buf.rename";
     options.desc = "Rename";
   }
   {
     mode = "n";
     key = "<leader>cf";
-    action = "<cmd>lua require('conform').format()<cr>";
+    action.__raw = "require('conform').format";
     options.desc = "Format Document";
   }
 
@@ -190,7 +216,7 @@
     options.desc = "Todo (Telescope)";
   }
 
-  # Jumps
+  # --- Jumps with flash.nvim ---
   {
     mode = [
       "n"
@@ -198,23 +224,21 @@
       "o"
     ];
     key = "s";
-    action = ''<cmd>lua require("flash").jump()<cr>'';
+    action.__raw = ''require("flash").jump'';
     options.desc = "Flash";
   }
   {
     mode = [
       "n"
-      "x"
-      "o"
     ];
     key = "S";
-    action = ''<cmd>lua require("flash").treesitter()<cr>'';
+    action.__raw = ''require("flash").treesitter'';
     options.desc = "Flash Treesitter";
   }
   {
     mode = "o";
     key = "r";
-    action = ''<cmd>lua require("flash").remote()<cr>'';
+    action.__raw = ''require("flash").remote'';
     options.desc = "Remote Flash";
   }
   {
@@ -222,8 +246,17 @@
       "x"
       "o"
     ];
-    key = "R";
-    action = ''<cmd>lua require("flash").treesitter_search()<cr>'';
+    key = "S";
+    action.__raw = ''
+      function()
+        require("flash").treesitter_search({
+          remote_op = {
+            restore = true,
+            motion = true,
+          }
+        })
+      end
+    '';
     options.desc = "Treesitter Search";
   }
 ]
