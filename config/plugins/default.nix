@@ -12,6 +12,7 @@
   render-markdown.enable = true;
   ollama.enable = true;
   blink-compat.enable = true;
+  blink-cmp-copilot.enable = true;
 
   treesitter = {
     enable = true;
@@ -116,6 +117,14 @@
     };
   };
 
+  copilot-lua = {
+    enable = true;
+    settings = {
+      suggestion.enabled = false; # Disable native ghost text
+      panel.enabled = false;
+    };
+  };
+
   blink-cmp = {
     enable = true;
     settings = {
@@ -130,7 +139,7 @@
         "<S-Tab>" = [
           "fallback"
         ];
-        "<Esc>" = [
+        "<C-c>" = [
           "hide"
           "fallback"
         ];
@@ -157,26 +166,13 @@
           "path"
           "snippets"
           "buffer"
-          "avante_commands"
-          "avante_mentions"
-          "avante_files"
+          "copilot"
         ];
-        providers = {
-          avante_commands = {
-            name = "avante_commands";
-            module = "blink.compat.source";
-            score_offset = 90;
-          };
-          avante_files = {
-            name = "avante_files";
-            module = "blink.compat.source";
-            score_offset = 100;
-          };
-          avante_mentions = {
-            name = "avante_mentions";
-            module = "blink.compat.source";
-            score_offset = 1000;
-          };
+        providers.copilot = {
+          name = "copilot";
+          module = "blink-cmp-copilot";
+          score_offset = 100;
+          async = true;
         };
       };
 
@@ -187,7 +183,14 @@
 
       completion = {
         documentation.auto_show = true;
-        ghost_text.enabled = false;
+        ghost_text.enabled = true;
+        menu = {
+          border = "rounded";
+          direction_priority = [
+            "n"
+            "s"
+          ];
+        };
       };
     };
   };
@@ -557,38 +560,6 @@
           "prettierd"
           "prettier"
         ];
-      };
-    };
-  };
-
-  avante = {
-    enable = true;
-    settings = {
-      provider = "ollama";
-      # Optional: use ollama for suggestions too
-      auto_suggestions_provider = "ollama";
-      providers = {
-        ollama-suggest = {
-          __inherited_from = "ollama";
-          model = "qwen2.5-coder:1.5b";
-          is_env_set = {
-            __raw = ''require("avante.providers.ollama").check_endpoint_alive'';
-          };
-        };
-        ollama = {
-          model = "qwen2.5-coder:7b";
-          # This bypasses the API key requirement for local models
-          is_env_set = {
-            __raw = ''require("avante.providers.ollama").check_endpoint_alive'';
-          };
-        };
-      };
-
-      mappings.suggestion = {
-        accept = "<S-Tab>";
-        next = "<M-]>";
-        prev = "<M-[>";
-        dismiss = "<C-]]>";
       };
     };
   };
