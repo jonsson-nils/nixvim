@@ -590,4 +590,23 @@
       };
     };
   };
+
+  lastplace = {
+    enable = true;
+    settings = {
+      ignore_buftype = [
+        "quickfix"
+        "nofile"
+        "help"
+      ];
+      ignore_filetype = [
+        "gitcommit"
+        "gitrebase"
+        "svn"
+        "hgcommit"
+        "jj"
+      ];
+      open_folds = true;
+    };
+  };
 }
