@@ -423,7 +423,7 @@
               icon = " ";
               key = "s";
               desc = "Restore Session";
-              action = ''lua require("persistence").load()'';
+              action = '':lua require("persistence").load()'';
             }
             {
               icon = " ";
