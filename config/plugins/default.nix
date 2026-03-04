@@ -183,8 +183,12 @@
 
       completion = {
         documentation.auto_show = true;
-        ghost_text.enabled = true;
+        ghost_text = {
+          enabled = true;
+          show_with_menu = false;
+        };
         menu = {
+          auto_show = false;
           border = "rounded";
           direction_priority = [
             "n"
