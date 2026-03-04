@@ -67,6 +67,11 @@
   }
   {
     mode = "n";
+    key = "<leader>cl";
+    action.__raw = ''require("lsp_lines").toggle'';
+  }
+  {
+    mode = "n";
     key = "<leader>ca";
     action.__raw = "vim.lsp.buf.code_action";
     options.desc = "Code Action";
