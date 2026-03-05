@@ -248,7 +248,19 @@
       lua_ls.enable = true;
 
       # Tailwind: Uses tailwindcss-language-server
-      tailwindcss.enable = true;
+      tailwindcss = {
+        enable = true;
+        filetypes = [
+          "html"
+          "css"
+          "rust"
+        ];
+        settings.tailwindCSS = {
+          includeLanguages = {
+            rust = "html";
+          };
+        };
+      };
     };
   };
 
