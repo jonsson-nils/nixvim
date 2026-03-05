@@ -4,6 +4,7 @@
     vimPlugins.friendly-snippets
     nixfmt
     wl-clipboard
+    tailwindcss-language-server
   ];
 
   globals.mapleader = " ";
