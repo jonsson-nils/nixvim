@@ -122,6 +122,13 @@
     settings = {
       suggestion.enabled = false; # Disable native ghost text
       panel.enabled = false;
+      server_opts_overrides = {
+        settings = {
+          telemetry = {
+            telemetryLevel = "off";
+          };
+        };
+      };
     };
   };
 
