@@ -235,6 +235,8 @@
   {
     mode = [
       "n"
+      "x"
+      "o"
     ];
     key = "S";
     action.__raw = ''require("flash").treesitter'';
@@ -251,7 +253,7 @@
       "x"
       "o"
     ];
-    key = "S";
+    key = "R";
     action.__raw = ''
       function()
         require("flash").treesitter_search({
